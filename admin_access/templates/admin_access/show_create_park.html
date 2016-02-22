@@ -1,0 +1,32 @@
+<h2>Create Park</h2>
+
+<form action="/admin_access/createPark/" method="post">
+{% csrf_token %}
+  <table border="1">
+    <tr>
+      <td><label>Name</label></td>
+      <td><input type="text" style="width:300" name="parkName" id="parkName" /></td>
+    </tr>
+    <tr>
+      <td><label>About</label></td>
+      <td><textarea rows="4" cols="50" name="about" id="about"></textarea></td>
+    </tr>
+    <tr>
+      <td><label>Best Time to Visit</label></td>
+      <td><input type="text" name="bestTimeToVisit" id="bestTimeToVisit" /></td>
+    </tr>
+    <tr>
+      <td><label>Location</label></td>
+      <td><input type="text" name="location" id="location" /></td>
+    </tr>
+    <tr>
+      <td><label>Places to Go</label></td>
+      <td><input type="text" name="placesToGo" id="placesToGo" /></td>
+    </tr>
+    <tr>
+      <td><label>Things to Do</label></td>
+      <td><input type="text" name="thingsToDo" id="thingsToDo" /></td>
+    </tr>
+  </table>
+  <input type="submit" value="Create" />
+</form>

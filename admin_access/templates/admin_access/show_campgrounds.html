@@ -1,0 +1,9 @@
+{% if campground_list %}
+  <ul>
+  {% for campground in campground_list %}
+    <li><a href="/admin_access/showCampground/{{ campground.campgroundName }}/">{{ campground.campgroundName }}</a></li>
+  {% endfor %}
+  </ul>
+{% else %}
+  <p>No parks are available.</p>
+{% endif %}

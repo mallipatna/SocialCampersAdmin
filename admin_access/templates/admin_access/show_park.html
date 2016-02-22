@@ -1,0 +1,28 @@
+{% if park %}
+  <h2>{{ park.parkName }}</h2>
+  <table border="1">
+    <tr>
+      <td><h3>About</h3></td>
+      <td><p>{{ park.about }}</p></td>
+    </tr>
+    <tr>
+      <td><h3>Best Time To Visit</h3></td>
+      <td><p>{{ park.bestTimeToVisit }}</p></td>
+    </tr>
+    <tr>
+      <td><h3>Location</h3></td>
+      <td><p>{{ park.location }}</p></td>
+    </tr>
+    <tr>
+      <td><h3>Places To Go</h3></td>
+      <td><p>{{ park.placesToGo }}</p></td>
+    </tr>
+    <tr>
+      <td><h3>Things To Do</h3></td>
+      <td><p>{{ park.thingsToDo }}</p></td>
+    </tr>
+  </table>
+  <p><a href="/admin_access/showCampgrounds/{{ park.parkName }}/">{{ park.parkName }}</a></p>
+{% else %}
+  <p>No parks to display.</p>
+{% endif %}
