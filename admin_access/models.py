@@ -21,14 +21,13 @@ class Park(DynamoDBModel):
 
 class Campground(DynamoDBModel):
     __table__ = "Campground"
-    __hash_key__ = "parkCampgroundName"
-    __range_key__ = "parkName"
+    __hash_key__ = "parkName"
+    __range_key__ = "campgroundName"
     __schema__ = {
-        "parkCampgroundName": str,
-        "parkName": str,
-        "campgroundName": str,
-        "bathroomType": str,
-        "datesOpen": str,
+        "parkName": unicode,
+        "campgroundName": unicode,
+        "bathroomType": unicode,
+        "datesOpen": unicode,
         "dumpStation": bool,
         "fee": Decimal,
         "numberCampsites": int,

@@ -20,6 +20,8 @@ from . import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^showCreatePark/', views.showCreatePark),
+    url(r'^showCreateCampground/', views.showCreateCampground),
+    url(r'^createCampground/', views.createCampground),
     url(r'^createPark/', views.createPark),
     url(r'^createTables/', views.createTables),
     url(r'^showParks/', views.showParks),

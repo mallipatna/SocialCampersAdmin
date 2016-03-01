@@ -1,21 +1,58 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+# . implies current directory
 from . import models
 from dynamodb_mapper.model import ConnectionBorg
 from boto.dynamodb.condition import *
+from decimal import Decimal
 
 
 # Create your views here.
 def createTables(request):
     conn = ConnectionBorg()
     conn.create_table(models.Campground, 1, 1, wait_for_active=True)
-    conn.create_table(models.Park, 1, 1, wait_for_active=True)
-    conn.create_table(models.Review, 1, 1, wait_for_active=True)
+    #conn.create_table(models.Park, 1, 1, wait_for_active=True)
+    #conn.create_table(models.Review, 1, 1, wait_for_active=True)
     return HttpResponse("Tables created")
 
 
 def showCreatePark(request):
     return render(request, 'admin_access/show_create_park.html')
+
+
+def showCreateCampground(request):
+    return render(request, 'admin_access/show_create_campground.html')
+
+
+# method to create campground
+# Display all parks in a drop-down and then select a park and enter campground information.
+def createCampground(request):
+    #parks = models.Park().scan()
+    #context = {'park_list': parks}
+    #render(request,'admin_access/show_create_campground.html', context)
+    #context = {'park_list': parks}
+    #return render(request, 'admin_access/show_parks.html', context)
+    campground = models.Campground()
+    campground.parkName = request.POST['parkName']
+    campground.campgroundName = request.POST['campgroundName']
+    #campground.parkCampgroundName = campground.parkName + "::" + campground.campgroundName
+    campground.bathroomType = request.POST['bathroomType']
+    campground.datesOpen = request.POST['datesOpen']
+    campground.dumpStation = toBoolean(request.POST['dumpStation'])
+    campground.fee = Decimal(request.POST['fee'])
+    campground.numberCampsites = int(request.POST['numberCampsites'])
+    campground.reserveSite = toBoolean(request.POST['reserveSite'])
+    campground.rvHookup = toBoolean(request.POST['rvHookup'])
+    campground.shower = toBoolean(request.POST['shower'])
+    campground.save()
+    return HttpResponse("Created campground")
+
+
+def toBoolean(uc):
+    if (uc == u"true") or (uc == u"yes") or (uc == u"True") or (uc == u"Yes"):
+        return True
+    else:
+        return False
 
 
 def createPark(request):

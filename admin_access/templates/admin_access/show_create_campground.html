@@ -1,0 +1,61 @@
+<h2>Create Campground</h2>
+
+<form action="/admin_access/createCampground/" method="post">
+    {% csrf_token %}
+    <table border="1">
+        <!--
+        <tr>
+            <td><label>Park name</label></td>
+            {% if park_list %}
+            {% endif %}
+            <td>
+            {% for park in park_list %}
+            <li><input type="radio" name="parkName" id="parkName"><{{ park.parkName }}</li>
+            {% endfor %}
+            </td>
+        </tr>
+        -->
+
+        <tr>
+            <td><label>Park Name</label></td>
+            <td><input type="text" width="300" name="parkName" id="parkName"></td>
+        </tr>
+        <tr>
+            <td><label>Campground name</label></td>
+            <td><input type="text" width="300" name="campgroundName" id="campgroundName"></td>
+        </tr>
+        <tr>
+            <td><label>Bathroom type</label></td>
+            <td><input type="text" width="200" name="bathroomType" id="bathroomType"></td>
+        </tr>
+        <tr>
+            <td><label>Dates Open</label></td>
+            <td><input type="text" width="300" name="datesOpen" id="datesOpen"></td>
+        </tr>
+        <tr>
+            <td><label>Dump Station (True/False)</label></td>
+            <td><input type="text" width="200" name="dumpStation" id="dumpStation"></td>
+        </tr>
+        <tr>
+            <td><label>Fee</label></td>
+            <td><input type="text" width="100" name="fee" id="fee"></td>
+        </tr>
+        <tr>
+            <td><label>Number of campsites</label></td>
+            <td><input type="text" width="100" name="numberCampsites" id="numberCampsites"></td>
+        </tr>
+        <tr>
+            <td><label>Reserve Site ( True / False )</label></td>
+            <td><input type="text" width="100" name="reserveSite" id="reserveSite"></td>
+        </tr>
+        <tr>
+            <td><label>RV Hookup (True/False)</label></td>
+            <td><input type="text" width="200" name="rvHookup" id="rvHookup"></td>
+        </tr>
+        <tr>
+            <td><label>Shower (True / False)</label></td>
+            <td><input type="text" width="200" name="shower" id="shower"></td>
+        </tr>
+    </table>
+    <input type="submit" value="Create" />
+</form>
